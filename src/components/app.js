@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ArticleList from './article-list'
-import articles from './fixtures'
+import ArticleList from '../components/article-list'
+import articles from '../fixtures'
 
 class App extends Component {
   render() {
