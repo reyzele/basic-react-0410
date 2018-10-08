@@ -6,7 +6,7 @@ class ArticleList extends Component {
     openArticleId: null
   }
 
-  toggleOpenArticle = (openArticleId) => () => this.setState({ openArticleId })
+  toggleOpenArticle = (openArticleId) => this.setState({ openArticleId })
 
   render() {
     return <ul>{this.items}</ul>
@@ -18,7 +18,7 @@ class ArticleList extends Component {
         <Article
           article={article}
           isOpen={this.state.openArticleId === article.id}
-          toggleOpen={this.toggleOpenArticle(article.id)}
+          toggleOpen={this.toggleOpenArticle}
         />
       </li>
     ))
