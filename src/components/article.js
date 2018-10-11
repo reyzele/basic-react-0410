@@ -1,29 +1,34 @@
 import React, { PureComponent } from 'react'
+import CommentList from './comment-list'
 
 class Article extends PureComponent {
   render() {
-    console.log('---', 'rendering article')
     const { article, isOpen } = this.props
-    const text = isOpen ? 'close' : 'open'
     return (
       <div>
-        <h3 ref={this.setTitleRef}>{article.title}</h3>
-        <button onClick={this.onButtonClick}>{text}</button>
+        <h3>
+          {article.title}
+          <button onClick={this.handleClick}>
+            {isOpen ? 'close' : 'open'}
+          </button>
+        </h3>
         {this.body}
       </div>
     )
   }
 
-  setTitleRef = (ref) => {
-    console.log('---', 'article title', ref)
-  }
-
-  onButtonClick = () => this.props.toggleOpen(this.props.article.id)
+  handleClick = () => this.props.toggleOpen(this.props.article.id)
 
   get body() {
     const { isOpen, article } = this.props
     if (!isOpen) return null
-    return <section>{article.text}</section>
+
+    return (
+      <section>
+        {article.text}
+        <CommentList comments={article.comments} />
+      </section>
+    )
   }
 }
 
