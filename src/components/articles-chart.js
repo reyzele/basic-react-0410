@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class ArticlesChart extends Component {
   render() {
-    return <div ref={this.setContainerRef} />
+    return <div ref={this.setContainerRef} />;
   }
 
   componentDidUpdate() {
@@ -10,13 +10,13 @@ class ArticlesChart extends Component {
   }
 
   setContainerRef = (ref) => {
-    this.container = ref
+    this.container = ref;
     if (ref) {
       //do some charting with d3 inside ref
     } else {
       //perform some cleanup
     }
-  }
+  };
 }
 
-export default ArticlesChart
+export default ArticlesChart;
