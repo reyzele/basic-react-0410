@@ -3,6 +3,12 @@ import Comment from './comment'
 import toggleOpen from '../decorators/toggleOpen'
 
 class CommentList extends Component {
+  /*
+  static defaultProps = {
+    comments: []
+  }
+*/
+
   render() {
     const { isOpen, toggleOpen } = this.props
     const text = isOpen ? 'hide comments' : 'show comments'
@@ -15,6 +21,7 @@ class CommentList extends Component {
   }
 
   getBody() {
+    //    const { comments = [], isOpen } = this.props
     const { comments, isOpen } = this.props
     if (!isOpen) return null
 
