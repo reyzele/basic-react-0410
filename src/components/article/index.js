@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
-import CommentList from './comment-list'
+import CSSTransition from 'react-addons-css-transition-group'
+import CommentList from '../comment-list'
+import './style.css'
 
-class Article extends PureComponent {
+class Index extends PureComponent {
   state = {
     error: null
   }
@@ -20,7 +22,15 @@ class Article extends PureComponent {
             {isOpen ? 'close' : 'open'}
           </button>
         </h3>
-        {this.body}
+        <CSSTransition
+          transitionAppear
+          transitionName="article"
+          transitionEnterTimeout={500}
+          transitionAppearTimeout={1000}
+          transitionLeaveTimeout={300}
+        >
+          {this.body}
+        </CSSTransition>
       </div>
     )
   }
@@ -41,4 +51,4 @@ class Article extends PureComponent {
   }
 }
 
-export default Article
+export default Index
