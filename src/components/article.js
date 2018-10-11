@@ -16,7 +16,7 @@ class Article extends PureComponent {
       <div>
         <h3>
           {article.title}
-          <button onClick={this.handleClick}>
+          <button onClick={this.handleClick} className="test--article__btn">
             {isOpen ? 'close' : 'open'}
           </button>
         </h3>
@@ -33,7 +33,7 @@ class Article extends PureComponent {
     if (this.state.error) return <h3>Error</h3>
 
     return (
-      <section>
+      <section className="test--article__body">
         {article.text}
         <CommentList comments={article.comments} />
       </section>
