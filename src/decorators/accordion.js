@@ -1,13 +1,17 @@
 //HOC === Higher Order Component == Decorator
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 const accordionDecorator = (OriginalComponent) =>
   class AccordionDecorator extends Component {
     state = {
       openItemId: null
-    }
+    };
 
-    toggleOpenItem = (openItemId) => this.setState({ openItemId })
+    toggleOpenItem = (openItemId) => {
+      this.state.openItemId !== openItemId
+        ? this.setState({ openItemId })
+        : this.setState({ openItemId: null });
+    };
 
     render() {
       return (
@@ -16,8 +20,8 @@ const accordionDecorator = (OriginalComponent) =>
           toggleOpenItem={this.toggleOpenItem}
           openItemId={this.state.openItemId}
         />
-      )
+      );
     }
-  }
+  };
 
-export default accordionDecorator
+export default accordionDecorator;
