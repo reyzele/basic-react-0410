@@ -38,6 +38,10 @@ describe('ArticleList', () => {
     expect(container.find('.test--article__body').length).toEqual(1)
   })
 
+  it('should close article on click', () => {
+    // Не смог понять как сделать
+  })
+
   it('should should fetch data on mount', () => {
     let functionIsCalled = false
     mount(

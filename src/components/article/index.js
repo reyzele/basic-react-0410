@@ -1,9 +1,16 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import CSSTransition from 'react-addons-css-transition-group'
 import CommentList from '../comment-list'
 import './style.css'
 
 class Index extends PureComponent {
+  static propTypes = {
+    article: PropTypes.object.isRequired,
+    isOpen: PropTypes.bool,
+    toggleOpen: PropTypes.func.isRequired
+  }
+
   state = {
     error: null
   }
@@ -14,6 +21,7 @@ class Index extends PureComponent {
 
   render() {
     const { article, isOpen } = this.props
+
     return (
       <div>
         <h3>
@@ -39,6 +47,7 @@ class Index extends PureComponent {
 
   get body() {
     const { isOpen, article } = this.props
+
     if (!isOpen) return null
     if (this.state.error) return <h3>Error</h3>
 
