@@ -6,7 +6,6 @@ class UserForm extends Component {
   }
 
   render() {
-    console.log('---', this.state.username)
     return (
       <div>
         Username:{' '}
