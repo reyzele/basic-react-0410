@@ -1,9 +1,19 @@
 import React, { PureComponent } from 'react'
 import CSSTransition from 'react-addons-css-transition-group'
+import PropTypes from 'prop-types'
 import CommentList from '../comment-list'
 import './style.css'
 
-class Index extends PureComponent {
+class Article extends PureComponent {
+  static propTypes = {
+    article: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      text: PropTypes.string
+    }).isRequired,
+    isOpen: PropTypes.bool,
+    toggleOpen: PropTypes.func.isRequired
+  }
+
   state = {
     error: null
   }
@@ -51,4 +61,4 @@ class Index extends PureComponent {
   }
 }
 
-export default Index
+export default Article
