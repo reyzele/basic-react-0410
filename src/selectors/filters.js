@@ -2,7 +2,7 @@ export default (state) => {
   const { articles, filters } = state
   let result
 
-  const filterDate = (date) => {
+  const filterDate = date => {
     const { from } = filters.date
     const { to } = filters.date
     let _date
