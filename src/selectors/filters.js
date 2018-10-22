@@ -2,29 +2,30 @@ export default (state) => {
   const { articles, filters } = state
   let result
 
+  const filterDate = (date) => {
+    const { from } = filters.date
+    const { to } = filters.date
+    let _date
+
+    _date = new Date(date)
+
+    return (
+      (from ? _date >= filters.date.from : true) &&
+      (to ? _date <= filters.date.to : true)
+    )
+  }
+
   if (!filters.entities.length && (!filters.date.from && !filters.date.to))
     return articles
 
   if (!filters.entities.length) {
-    result = articles.filter((article) => {
-      let date = new Date(article.date)
-
-      return (
-        (filters.date.from ? date >= filters.date.from : true) &&
-        (filters.date.to ? date <= filters.date.to : true)
-      )
-    })
+    result = articles.filter(({ date }) => filterDate(date))
   } else {
-    result = articles
-      .filter(({ id }) => filters.entities.some(({ value }) => id === value))
-      .filter((article) => {
-        let date = new Date(article.date)
+    const entities = filters.entities
 
-        return (
-          (filters.date.from ? date >= filters.date.from : true) &&
-          (filters.date.to ? date <= filters.date.to : true)
-        )
-      })
+    result = articles
+      .filter(({ id }) => entities.some(({ value }) => id === value))
+      .filter(({ date }) => filterDate(date))
   }
 
   return result
